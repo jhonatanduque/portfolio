@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jhon Duque — Portfólio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --green:#2d5016;
+  --green-mid:#3d6b1e;
+  --green-light:#e8f0dc;
+  --brown:#8f5426;
+  --gold:#d29940;
+  --gold-light:#f0d898;
+  --bg:#F7F4EF;
+  --surface:#ffffff;
+  --text:#1C1C1C;
+  --text-secondary:#5a5a5a;
+  --text-muted:#999;
+  --border:rgba(0,0,0,0.08);
+  --r:10px;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ── TYPOGRAPHY ── */
+.syne{font-family:'Syne',sans-serif}
+.mono{font-family:'DM Mono',monospace}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;
+  background:rgba(247,244,239,0.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.07)}
+.nav-logo{
+  font-family:'Syne',sans-serif;
+  font-size:17px;font-weight:700;
+  color:var(--green);
+  letter-spacing:-.01em;
+}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{
+  font-size:13px;font-weight:500;
+  color:var(--text-secondary);
+  text-decoration:none;
+  letter-spacing:.01em;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--green)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:120px 48px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(45,80,22,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(210,153,64,0.07) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-grid{
+  max-width:1100px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 380px;
+  gap:80px;align-items:center;
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;
+  font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-eyebrow::before{
+  content:'';display:block;
+  width:28px;height:1.5px;
+  background:var(--gold);
+}
+.hero-name{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(42px,6vw,72px);
+  font-weight:800;
+  letter-spacing:-.03em;
+  line-height:1.0;
+  color:var(--green);
+  margin-bottom:24px;
+}
+.hero-name em{
+  font-style:normal;
+  color:var(--brown);
+}
+.hero-statement{
+  font-size:18px;
+  line-height:1.65;
+  color:var(--text-secondary);
+  max-width:520px;
+  margin-bottom:36px;
+  font-weight:400;
+}
+.hero-statement strong{color:var(--text);font-weight:600}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--green);color:#fff;
+  padding:13px 26px;border-radius:6px;
+  font-size:14px;font-weight:600;
+  text-decoration:none;
+  letter-spacing:.01em;
+  transition:background .2s, transform .2s;
+}
+.hero-cta:hover{background:var(--green-mid);transform:translateY(-1px)}
+.hero-cta-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--text-secondary);
+  padding:13px 20px;
+  font-size:14px;font-weight:500;
+  text-decoration:none;
+  margin-left:8px;
+  transition:color .2s;
+}
+.hero-cta-ghost:hover{color:var(--green)}
+
+/* Pilares card */
+.hero-pilares{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:28px;
+  display:flex;flex-direction:column;gap:20px;
+}
+.pilar{display:flex;gap:14px;align-items:flex-start}
+.pilar-num{
+  font-family:'DM Mono',monospace;
+  font-size:11px;font-weight:500;
+  color:var(--gold);
+  padding-top:3px;
+  flex-shrink:0;
+}
+.pilar-text strong{
+  display:block;font-size:14px;font-weight:600;
+  color:var(--text);margin-bottom:3px;
+}
+.pilar-text span{font-size:13px;color:var(--text-secondary);line-height:1.5}
+
+/* ── SECTION WRAPPER ── */
+.section{
+  max-width:1100px;margin:0 auto;
+  padding:100px 48px;
+}
+.section-header{
+  display:flex;align-items:baseline;gap:20px;
+  margin-bottom:56px;
+  padding-bottom:20px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-label{
+  font-family:'DM Mono',monospace;
+  font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.section-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(26px,3vw,36px);
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:var(--text);
+}
+
+/* ── PROJECTS GRID ── */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(320px,1fr));
+  gap:20px;
+}
+.project-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:28px;
+  cursor:pointer;
+  transition:box-shadow .25s, transform .25s, border-color .25s;
+  position:relative;
+  overflow:hidden;
+}
+.project-card::before{
+  content:'';
+  position:absolute;bottom:0;left:0;
+  height:3px;width:0;
+  background:var(--gold);
+  transition:width .35s ease;
+}
+.project-card:hover{
+  box-shadow:0 8px 32px rgba(0,0,0,0.1);
+  transform:translateY(-2px);
+  border-color:rgba(45,80,22,0.2);
+}
+.project-card:hover::before{width:100%}
+.project-card-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:16px;
+}
+.project-tag{
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border-radius:20px;
+  font-weight:500;
+}
+.tag-mel{background:#e8f0dc;color:var(--green)}
+.tag-pesquisa{background:#f9f0e0;color:var(--brown)}
+.tag-facilit{background:#fff5e6;color:#a06020}
+.tag-gestao{background:#f0e8f5;color:#6a3580}
+.tag-sistematiz{background:#e6f5f0;color:#1a6b55}
+
+.project-year{
+  font-family:'DM Mono',monospace;
+  font-size:11px;color:var(--text-muted);
+}
+.project-title{
+  font-family:'Syne',sans-serif;
+  font-size:18px;font-weight:700;
+  letter-spacing:-.01em;
+  color:var(--text);
+  margin-bottom:6px;
+  line-height:1.25;
+}
+.project-org{
+  font-size:12px;color:var(--gold);
+  font-weight:500;margin-bottom:12px;
+  font-family:'DM Mono',monospace;
+}
+.project-excerpt{
+  font-size:13.5px;color:var(--text-secondary);
+  line-height:1.6;
+  margin-bottom:20px;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.project-cta{
+  font-size:12.5px;font-weight:600;
+  color:var(--green);
+  display:flex;align-items:center;gap:6px;
+  letter-spacing:.01em;
+}
+.project-cta svg{transition:transform .2s}
+.project-card:hover .project-cta svg{transform:translateX(4px)}
+
+/* ── PENSAMENTO SECTION ── */
+.pensamento-bg{
+  background:var(--green);
+  padding:100px 0;
+}
+.pensamento-inner{
+  max-width:1100px;margin:0 auto;
+  padding:0 48px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+}
+.pensamento-label{
+  font-family:'DM Mono',monospace;
+  font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+.pensamento-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(26px,3vw,38px);
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:#fff;
+  line-height:1.15;
+  margin-bottom:24px;
+}
+.pensamento-text{
+  font-size:15px;color:rgba(255,255,255,0.72);
+  line-height:1.75;
+  margin-bottom:20px;
+}
+.pensamento-text strong{color:rgba(255,255,255,0.92)}
+.pensamento-cite{
+  border-left:3px solid var(--gold);
+  padding:16px 20px;
+  margin-top:28px;
+  font-size:15px;font-style:italic;
+  color:rgba(255,255,255,0.85);
+  line-height:1.7;
+}
+
+/* ── CONTACT ── */
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:48px;align-items:center;
+}
+.contact-text{
+  font-size:15px;color:var(--text-secondary);
+  line-height:1.75;margin-bottom:28px;
+}
+.contact-links{display:flex;flex-direction:column;gap:12px}
+.contact-link{
+  display:flex;align-items:center;gap:12px;
+  font-size:14px;color:var(--text-secondary);
+  text-decoration:none;
+  padding:14px 18px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  transition:border-color .2s,color .2s,box-shadow .2s;
+}
+.contact-link:hover{
+  border-color:var(--green);
+  color:var(--green);
+  box-shadow:0 2px 12px rgba(45,80,22,0.08);
+}
+.contact-link-icon{
+  width:36px;height:36px;
+  background:var(--green-light);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.contact-link-info strong{display:block;font-weight:600;font-size:13.5px}
+.contact-link-info span{font-size:12px;color:var(--text-muted)}
+
+/* Formação */
+.formacao-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+.formacao-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:22px;
+}
+.formacao-card-year{
+  font-family:'DM Mono',monospace;
+  font-size:11px;color:var(--text-muted);
+  margin-bottom:6px;
+}
+.formacao-card-title{
+  font-family:'Syne',sans-serif;
+  font-size:14px;font-weight:700;
+  color:var(--text);margin-bottom:4px;
+  line-height:1.3;
+}
+.formacao-card-inst{font-size:13px;color:var(--text-secondary)}
+.formacao-card.highlight{
+  border-color:var(--gold);
+  background:linear-gradient(135deg,#fffbf0 0%,#fff8e6 100%);
+}
+.formacao-badge{
+  display:inline-block;
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:.08em;
+  text-transform:uppercase;
+  background:var(--gold);color:#fff;
+  padding:2px 8px;border-radius:10px;
+  margin-bottom:8px;
+  font-weight:500;
+}
+
+/* ── DRAWER ── */
+.drawer-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,0);
+  pointer-events:none;
+  transition:background .35s;
+}
+.drawer-overlay.open{
+  background:rgba(0,0,0,0.45);
+  pointer-events:all;
+}
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:201;
+  width:min(600px,95vw);
+  background:var(--surface);
+  transform:translateX(100%);
+  transition:transform .4s cubic-bezier(0.32,0,0.15,1);
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.drawer.open{transform:translateX(0)}
+.drawer-header{
+  padding:32px 36px 24px;
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;
+  background:var(--surface);
+  z-index:1;
+}
+.drawer-close{
+  position:absolute;top:24px;right:28px;
+  background:none;border:none;
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border-radius:6px;
+  color:var(--text-secondary);
+  font-size:20px;
+  transition:background .2s,color .2s;
+}
+.drawer-close:hover{background:var(--bg);color:var(--text)}
+.drawer-tag{margin-bottom:10px}
+.drawer-title{
+  font-family:'Syne',sans-serif;
+  font-size:24px;font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1.2;
+  color:var(--text);
+  padding-right:40px;
+}
+.drawer-org{
+  font-family:'DM Mono',monospace;
+  font-size:12px;color:var(--gold);
+  font-weight:500;margin-top:6px;
+}
+.drawer-body{padding:32px 36px;flex:1}
+.drawer-section{margin-bottom:28px}
+.drawer-section-label{
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-bottom:10px;
+}
+.drawer-section p{
+  font-size:14.5px;color:var(--text-secondary);
+  line-height:1.75;
+}
+.drawer-section p + p{margin-top:12px}
+.drawer-highlight{
+  background:var(--green-light);
+  border-left:3px solid var(--green);
+  border-radius:0 6px 6px 0;
+  padding:14px 18px;
+  font-size:14px;
+  color:var(--green);
+  line-height:1.65;
+  font-style:italic;
+  margin-top:8px;
+}
+.drawer-meta{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:8px;
+}
+.drawer-meta-pill{
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  padding:4px 12px;
+  border-radius:20px;
+  background:var(--bg);
+  color:var(--text-secondary);
+  border:1px solid var(--border);
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--green);
+  padding:40px 48px;
+  text-align:center;
+  color:rgba(255,255,255,0.5);
+  font-size:13px;
+  font-family:'DM Mono',monospace;
+}
+footer span{color:var(--gold)}
+
+/* ── LINE ANIMATE ── */
+.line-divider{
+  height:1.5px;
+  background:linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  transform-origin:left;
+  transform:scaleX(0);
+  transition:transform 1.2s cubic-bezier(0.4,0,0.2,1);
+  margin:0 48px 0;
+  max-width:1100px;
+}
+.line-divider.visible{transform:scaleX(1)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .hero{padding:100px 20px 60px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-pilares{display:none}
+  .section{padding:70px 20px}
+  .pensamento-inner{grid-template-columns:1fr;gap:40px;padding:0 20px}
+  .contact-grid{grid-template-columns:1fr;gap:32px}
+  .drawer-header,.drawer-body{padding-left:24px;padding-right:24px}
+  footer{padding:32px 20px}
+  .line-divider{margin:0 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo syne">Jhon Duque</div>
+  <ul class="nav-links">
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#pensamento">Como penso</a></li>
+    <li><a href="#formacao">Formação</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow mono">Portfólio profissional</div>
+      <h1 class="hero-name syne">Jhon<br><em>Duque</em></h1>
+      <p class="hero-statement">
+        Gestor de projetos na interseção entre
+        <strong>governança, evidências e território</strong>.
+        Minha atuação conecta gestão de projetos, MEL e facilitação
+        para fortalecer políticas públicas e iniciativas de impacto
+        socioambiental com povos e comunidades.
+      </p>
+      <div>
+        <a href="#contato" class="hero-cta">Vamos conversar</a>
+        <a href="#projetos" class="hero-cta-ghost">Ver projetos →</a>
+      </div>
+    </div>
+    <div class="hero-pilares">
+      <div class="pilar">
+        <div class="pilar-num mono">01</div>
+        <div class="pilar-text">
+          <strong>Gestão de Projetos & Governança</strong>
+          <span>Estruturação de propostas, contratos, indicadores e fluxos de gestão em contextos de alta complexidade territorial.</span>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--border)"></div>
+      <div class="pilar">
+        <div class="pilar-num mono">02</div>
+        <div class="pilar-text">
+          <strong>MEL & Evidências</strong>
+          <span>Sistemas de Monitoramento, Avaliação e Aprendizagem orientados ao uso, com métodos quantitativos e qualitativos.</span>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--border)"></div>
+      <div class="pilar">
+        <div class="pilar-num mono">03</div>
+        <div class="pilar-text">
+          <strong>Facilitação & Territórios</strong>
+          <span>Diálogos multissetoriais, sistematização de saberes e processos colaborativos com comunidades tradicionais.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="line-divider" id="line1" style="margin:0 auto;width:calc(100% - 96px)"></div>
+
+<!-- PROJETOS -->
+<section class="section" id="projetos">
+  <div class="section-header">
+    <span class="section-label mono">Projetos</span>
+    <h2 class="section-title syne">Experiências em campo</h2>
+  </div>
+  <div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<div class="line-divider" id="line2" style="margin:0 auto;width:calc(100% - 96px)"></div>
+
+<!-- COMO PENSO -->
+<section class="pensamento-bg" id="pensamento">
+  <div class="pensamento-inner">
+    <div>
+      <div class="pensamento-label mono">Como penso</div>
+      <h2 class="pensamento-title syne">Gestão de projetos é uma prática política.</h2>
+      <p class="pensamento-text">
+        Organizar processos, gerar evidências e articular atores são formas de
+        <strong>fortalecer ou excluir territórios</strong>. Essa escolha raramente aparece
+        nos frameworks — mas está sempre presente nas decisões de quem planeja.
+      </p>
+      <p class="pensamento-text">
+        Minha lente de análise parte de Guerreiro Ramos: o conhecimento produzido fora de
+        uma realidade precisa passar por <strong>filtragem crítica</strong> antes de ser
+        aplicado a ela. Ignorar esse processo é impor uma racionalidade externa sobre
+        territórios que possuem suas próprias formas de organização e sentido.
+      </p>
+      <div class="pensamento-cite">
+        "Ferramentas de gestão só cumprem seu potencial quando aplicadas com escuta territorial.
+        A eficiência não nasce do planejamento central — ela nasce do alinhamento entre
+        o que se planeja e o que o território permite, pede e ensina."
+      </div>
+    </div>
+    <div>
+      <p class="pensamento-text" style="margin-bottom:20px">
+        Na prática, isso se traduz em algumas convicções que orientam meu trabalho:
+      </p>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);padding:18px 20px">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Sobre planejamento</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.78);line-height:1.65">Cronogramas que não conversam com a cheia e a seca dos rios não são apenas ineficientes — são excludentes. Planejar em território exige planos vivos.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);padding:18px 20px">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Sobre evidências</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.78);line-height:1.65">Dados só têm valor quando retornam ao território que os gerou. MEL que não alimenta aprendizagem é apenas relatório para financiador.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);padding:18px 20px">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Sobre exclusão</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.78);line-height:1.65">O que chamamos de "falha de execução" muitas vezes é exclusão com assinatura técnica — estrutural, não acidental.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="line-divider" id="line3" style="margin:0 auto;width:calc(100% - 96px)"></div>
+
+<!-- FORMAÇÃO -->
+<section class="section" id="formacao">
+  <div class="section-header">
+    <span class="section-label mono">Formação</span>
+    <h2 class="section-title syne">Trajetória acadêmica</h2>
+  </div>
+  <div class="formacao-grid">
+    <div class="formacao-card highlight">
+      <div class="formacao-badge">Em andamento</div>
+      <div class="formacao-card-year mono">2026 →</div>
+      <div class="formacao-card-title syne">Mestrado Profissional em Práticas em Desenvolvimento Sustentável</div>
+      <div class="formacao-card-inst">UFRRJ — ppgPDS · Pesquisa: territórios quilombolas e políticas públicas</div>
+    </div>
+    <div class="formacao-card highlight">
+      <div class="formacao-badge">Em andamento</div>
+      <div class="formacao-card-year mono">2024 → 2026</div>
+      <div class="formacao-card-title syne">MBA em Gestão de Projetos</div>
+      <div class="formacao-card-inst">Poli USP PRO — Escola Politécnica da USP</div>
+    </div>
+    <div class="formacao-card">
+      <div class="formacao-card-year mono">2018 → 2022</div>
+      <div class="formacao-card-title syne">Bacharelado em Administração</div>
+      <div class="formacao-card-inst">CEFET/RJ — Centro Federal de Educação Tecnológica</div>
+    </div>
+    <div class="formacao-card">
+      <div class="formacao-card-year mono">2016 → 2018</div>
+      <div class="formacao-card-title syne">Engenharia de Produção (incompleto)</div>
+      <div class="formacao-card-inst">Universidade Veiga de Almeida</div>
+    </div>
+    <div class="formacao-card">
+      <div class="formacao-card-year mono">2012 → 2015</div>
+      <div class="formacao-card-title syne">Técnico em Química</div>
+      <div class="formacao-card-inst">IFRJ — Instituto Federal do Rio de Janeiro, Caxias</div>
+    </div>
+  </div>
+</section>
+
+<div class="line-divider" id="line4" style="margin:0 auto;width:calc(100% - 96px)"></div>
+
+<!-- CONTATO -->
+<section class="section" id="contato">
+  <div class="section-header">
+    <span class="section-label mono">Contato</span>
+    <h2 class="section-title syne">Vamos conversar</h2>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-text">
+        Atuo em projetos de impacto socioambiental, desenvolvimento territorial e políticas públicas —
+        tanto pela <strong>Olab</strong> quanto de forma independente pela <strong>ikore</strong>.
+        Se você tem uma iniciativa onde gestão, evidências e território se encontram, estou disponível
+        para contribuir.
+      </p>
+      <p class="contact-text">
+        Aberto a consultorias, colaborações pontuais e projetos de pesquisa aplicada.
+      </p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:jhon.gestproj@gmail.com" class="contact-link">
+        <div class="contact-link-icon">📧</div>
+        <div class="contact-link-info">
+          <strong>E-mail</strong>
+          <span>jhon.gestproj@gmail.com</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/jhonatanduque/" target="_blank" rel="noopener" class="contact-link">
+        <div class="contact-link-icon">🔗</div>
+        <div class="contact-link-info">
+          <strong>LinkedIn</strong>
+          <span>linkedin.com/in/jhonatanduque</span>
+        </div>
+      </a>
+      <a href="https://api.whatsapp.com/send/?phone=24992141853" target="_blank" rel="noopener" class="contact-link">
+        <div class="contact-link-icon">💬</div>
+        <div class="contact-link-info">
+          <strong>WhatsApp</strong>
+          <span>(24) 99214-1853</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    <div class="drawer-tag" id="drawerTag"></div>
+    <div class="drawer-title syne" id="drawerTitle"></div>
+    <div class="drawer-org mono" id="drawerOrg"></div>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>Jhon Duque · Rio de Janeiro, Brasil · <span id="footerYear"></span></div>
+  <div style="margin-top:6px">ikore · Olab · ppgPDS/UFRRJ</div>
+</footer>
+
+<script>
+// ── DATA ──
+const projects = [
+  {
+    id: 1,
+    tag: 'MEL',
+    tagClass: 'tag-mel',
+    year: '2025 → 2027',
+    title: 'Sistema MEL para Agricultura Familiar no Pará',
+    org: 'The Nature Conservancy (TNC) + Olab · Accenture/GlobalGiving',
+    excerpt: 'Estruturação e implementação de sistemática multimétodo de Monitoramento, Avaliação e Aprendizagem para estratégia de redução do desmatamento na Transamazônica e Sudeste do Pará.',
+    contexto: 'Projeto de desenvolvimento territorial em duas regiões prioritárias do Pará — Transamazônica (Altamira, Brasil Novo, Medicilândia, Uruará, Placas, Novo Repartimento e Pacajá) e Sudeste do Pará (Tucumã, São Félix do Xingu, Ourilândia do Norte e Água Azul do Norte). Financiado pela Accenture via GlobalGiving, coordenado pela TNC com 7 parceiros implementadores e executado pela Olab. O projeto atua em dois programas: Treinamentos (agricultores familiares) e Desenvolvimento Territorial (cooperativas e organizações rurais).',
+    atuacao: 'Estruturação e implementação da sistemática de MEL: definição de indicadores, construção de instrumentos de coleta (KoboToolbox), desenvolvimento e atualização quinzenal do dashboard em Looker Studio, treinamento dos parceiros implementadores, verificação amostral de 10% dos registros em campo, coleta qualitativa in loco e facilitação de Oficinas de Pausa e Reflexão. Apoio à construção da Matriz de MEL articulando Teoria da Mudança, indicadores, fontes e responsabilidades.',
+    resultado: 'Sistema MEL multimétodo operacional para acompanhar metas de alcance de 1.000 pessoas conectadas, 800 melhoradas e 150–200 transformadas, com cobertura censitária das 8–12 organizações monitoradas. Dashboard com atualização periódica para prestação de contas ao financiador e gestão adaptativa pela TNC.',
+    destaque: null,
+    meta: ['Transamazônica & Sudeste do Pará', '7 parceiros implementadores', 'Looker Studio · KoboToolbox', 'Março 2025 → Abril 2027']
+  },
+  {
+    id: 2,
+    tag: 'Pesquisa',
+    tagClass: 'tag-pesquisa',
+    year: '2025 → 2026',
+    title: 'Gargalos Logísticos e de Comunicação no PAA/Pará',
+    org: 'TCC MBA · Poli USP PRO',
+    excerpt: 'Pesquisa aplicada sobre os gargalos logísticos e de comunicação na execução do PAA no estado do Pará entre 2023 e 2024, analisada sob os domínios de desempenho do Guia PMBOK 7ª ed. e a lente da Redução Sociológica de Guerreiro Ramos.',
+    contexto: 'O Pará é a segunda região em volume de investimentos federais do PAA. Entre 2023 e 2024, o índice de entrega caiu de 97,7% para 78,3% — sinal de fragilidades que vão além de limites orçamentários. A pesquisa parte de uma pergunta incômoda: quando a gestão ignora o território, ela está falhando — ou excluindo?',
+    atuacao: 'Pesquisa com delineamento híbrido combinando pesquisa documental (dados CONAB, relatórios EMATER-PA e SEAF 2023–2024) e pesquisa participante (registros de campo do autor durante atuação em sociobiodiversidade no Pará). Análise integrada nos quatro domínios críticos: Entrega, Partes Interessadas, Incerteza e Planejamento. Diálogo entre PMBOK e a Redução Sociológica de Guerreiro Ramos como filtro crítico.',
+    resultado: 'Os gargalos identificados não são falhas isoladas — são manifestações interconectadas de ausência de gestão adaptada ao território amazônico. Editais em linguagem inacessível, transição DAP→CAF sem comunicação capilarizada, cronogramas lineares que ignoram sazonalidade dos rios, comunidades que nunca ouviram falar de um programa criado para elas. O estudo propõe uma gestão que escuta antes de organizar.',
+    destaque: '"O que chamamos de falha de execução é, na verdade, exclusão com assinatura técnica."',
+    meta: ['PAA · CONAB · EMATER-PA', 'PMBOK 7ª ed. · Guerreiro Ramos', 'Pesquisa Documental + Participante', 'Poli USP PRO · 2026']
+  },
+  {
+    id: 3,
+    tag: 'Facilitação',
+    tagClass: 'tag-facilit',
+    year: 'Outubro 2025',
+    title: 'Co-facilitação de Offsite Estratégico',
+    org: 'Projeto Olab · Pará',
+    excerpt: 'Co-design e facilitação de processo de realinhamento estratégico para mais de 70 pessoas durante offsite de cinco dias no Pará, com produção de Memory Book e materiais visuais.',
+    contexto: 'A organização precisava realinhar uma equipe de mais de 70 pessoas durante um offsite de cinco dias no Pará, reunindo profissionais de áreas diversas e transformando objetivos estratégicos em jornadas de trabalho colaborativas.',
+    atuacao: 'Apoio e desenho do processo: arquitetura da agenda, design de dinâmicas, criação de materiais visuais e co-facilitação de encontros. Articulação e sistematização de informações colhidas, gerando Memory Book do offsite como documento de referência para o próximo ciclo estratégico.',
+    resultado: 'Fluidez, engajamento e integração consistente entre os participantes, resultando no alinhamento estratégico da equipe. Memory Book como instrumento de memória organizacional e referência para ações subsequentes.',
+    destaque: null,
+    meta: ['+70 participantes', '5 dias · Pará', 'Design de processos · Sistematização', 'Outubro 2025']
+  },
+  {
+    id: 4,
+    tag: 'Facilitação',
+    tagClass: 'tag-facilit',
+    year: 'Jul → Dez 2025',
+    title: 'Revisão Estratégica e Teoria da Mudança',
+    org: 'ikore · Consultoria',
+    excerpt: 'Apoio a processo de atualização de Teoria da Mudança e redesenho estratégico, com entrevistas, síntese de dados qualitativos e quantitativos, e co-facilitação de workshops com lideranças.',
+    contexto: 'A partir da necessidade de atualizar sua Teoria da Mudança e fortalecer o direcionamento estratégico, a organização iniciou um processo de escuta e reflexão coletiva envolvendo lideranças e equipes.',
+    atuacao: 'Apoio a entrevistas, síntese de informações-chave e desenvolvimento de materiais de apoio (mapas no Miro, apresentações estruturadas). Co-facilitação de workshops articulando dados qualitativos e quantitativos para fundamentar as decisões e construir uma visão compartilhada.',
+    resultado: 'Base estratégica mais aderente e compartilhada, com referências práticas que orientam os próximos ciclos de planejamento e fortalecem a convergência da organização.',
+    destaque: null,
+    meta: ['Teoria da Mudança', 'Miro · Entrevistas qualitativas', 'Jul → Dez 2025']
+  },
+  {
+    id: 5,
+    tag: 'Sistematização',
+    tagClass: 'tag-sistematiz',
+    year: 'Fevereiro 2025',
+    title: 'Sistematização de Saberes — Sociobiodiversidade',
+    org: 'ikore · Manaus/AM & Pará',
+    excerpt: 'Facilitação e sistematização do primeiro encontro presencial de técnicos, gestores e beneficiários de programa de Sociobiodiversidade no Pará e Amazônia, com colheita sensível de saberes de comunidades tradicionais.',
+    contexto: 'O desafio era estruturar o primeiro encontro presencial de técnicos, gestores e beneficiários de um programa da Sociobiodiversidade no Pará e na Amazônia, assegurando a escuta e o registro dos saberes de povos produtores e comunidades tradicionais.',
+    atuacao: 'Atuação como sistematizador e facilitador de conteúdo: contribuição para a construção da agenda e colheita sensível durante os três dias de workshop. Escuta ativa de povos produtores e comunidades tradicionais da Amazônia e Pará. Elaboração do Relatório Final — conteúdo e design.',
+    resultado: 'Sistematização detalhada dos aprendizados que consolidou a base de conhecimento do projeto e garantiu que as vozes das comunidades orientassem os próximos passos da iniciativa.',
+    destaque: null,
+    meta: ['Sociobiodiversidade', 'Manaus/AM · Pará', 'Povos tradicionais', 'Fevereiro 2025']
+  },
+  {
+    id: 6,
+    tag: 'Gestão',
+    tagClass: 'tag-gestao',
+    year: 'Maio 2025',
+    title: 'Gestão da Performance Urbana Iridescência',
+    org: 'ikore · Anavi Produtora · Valença/RJ',
+    excerpt: 'Gestão do projeto e produção da performance urbana Iridescência em Valença/RJ, integrada à Política Nacional Aldir Blanc, incluindo planejamento, articulação institucional e condução do cronograma.',
+    contexto: 'A produção da performance urbana Iridescência, em Valença/RJ, exigia articulação institucional e gestão de projetos rigorosa para cumprir as exigências regulatórias da Política Nacional Aldir Blanc e viabilizar a ação em espaço público.',
+    atuacao: 'Gestão do projeto com foco no planejamento, condução do cronograma, articulação institucional e produção de campo durante a performance e a gravação. Interface com a Anavi Produtora e órgãos competentes para regularização e execução.',
+    resultado: 'Projeto executado com sucesso, cumprindo todas as exigências regulatórias e garantindo a realização da performance em espaço público. Arte contemporânea levada a espaços de acesso coletivo, com documentação e registro da ação.',
+    destaque: null,
+    meta: ['Política Nacional Aldir Blanc', 'Arte contemporânea · Espaço público', 'Valença/RJ · Maio 2025']
+  }
+];
+
+// ── RENDER PROJECTS ──
+function renderProjects() {
+  const grid = document.getElementById('projectsGrid');
+  grid.innerHTML = projects.map(p => `
+    <div class="project-card" onclick="openDrawer(${p.id})">
+      <div class="project-card-top">
+        <span class="project-tag ${p.tagClass}">${p.tag}</span>
+        <span class="project-year mono">${p.year}</span>
+      </div>
+      <div class="project-title syne">${p.title}</div>
+      <div class="project-org mono">${p.org}</div>
+      <p class="project-excerpt">${p.excerpt}</p>
+      <div class="project-cta">
+        Ver projeto completo
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── DRAWER ──
+function openDrawer(id) {
+  const p = projects.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('drawerTag').innerHTML = `<span class="project-tag ${p.tagClass}">${p.tag}</span>`;
+  document.getElementById('drawerTitle').textContent = p.title;
+  document.getElementById('drawerOrg').textContent = p.org;
+  document.getElementById('drawerBody').innerHTML = `
+    <div class="drawer-section">
+      <div class="drawer-section-label mono">Contexto</div>
+      <p>${p.contexto}</p>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-section-label mono">O que foi feito</div>
+      <p>${p.atuacao}</p>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-section-label mono">Resultado</div>
+      <p>${p.resultado}</p>
+      ${p.destaque ? `<div class="drawer-highlight">${p.destaque}</div>` : ''}
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-section-label mono">Detalhes</div>
+      <div class="drawer-meta">${p.meta.map(m => `<span class="drawer-meta-pill">${m}</span>`).join('')}</div>
+    </div>
+  `;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── LINE ANIMATE ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.3 });
+document.querySelectorAll('.line-divider').forEach(el => observer.observe(el));
+
+// ── FOOTER YEAR ──
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+// ── INIT ──
+renderProjects();
+</script>
+</body>
+</html>
